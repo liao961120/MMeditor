@@ -51,6 +51,11 @@ span#latex {
     overflow-y: scroll;
 }
 
+#preview span.katex span {
+    line-height: 1.1em;
+    font-size: 0.96em;
+}
+
 textarea {
     width: 100%;
     height: 45%;

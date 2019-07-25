@@ -11,10 +11,23 @@ document.addEventListener('DOMContentLoaded', () => {
     else 
         document.querySelector('textarea#text-input').value = sessionStorage.getItem('markdown-local');
     
-    // update storage
     document.querySelector('textarea#text-input').addEventListener('input', function() {
+        // update sessionStorage
         let content = this.value;
-        sessionStorage.setItem('markdown-local', content)
+        sessionStorage.setItem('markdown-local', content);
+
+        // render math        
+        renderMathInElement(
+            document.querySelector('#preview'),
+            {
+                delimiters: [
+                    {left: "$$", right: "$$", display: true},
+                    {left: "\\[", right: "\\]", display: true},
+                    {left: "$", right: "$", display: false},
+                    {left: "\\(", right: "\\)", display: false}
+                ]
+        });
+    
     });
 });
 
