@@ -2,19 +2,31 @@ document.addEventListener('DOMContentLoaded', () => {
     sizeIframe();
     window.onresize = sizeIframe; 
 
+    document.querySelector('button#showPreview').onclick = () => {
+        let mdPreview = document.querySelector('.row.md-preview');
+        mdPreview.style.display = 'block';
+        document.querySelector('button#hidePreview').style.display = 'inline';
+
+        setInterval(window.scrollTo(0,0), 300); 
+    };
+
+    document.querySelector('button#hidePreview').onclick = () => {
+        let mdPreview = document.querySelector('.row.md-preview');
+        mdPreview.style.display = 'none';
+        document.querySelector('button#hidePreview').style.display = 'none';
+    };   
 
 
-    
     // local storage
-    if (!sessionStorage.getItem('markdown-local'))
-        sessionStorage.setItem('markdown-local', '')
+    if (!localStorage.getItem('markdown-local'))
+        localStorage.setItem('markdown-local', '')
     else 
-        document.querySelector('textarea#text-input').value = sessionStorage.getItem('markdown-local');
+        document.querySelector('textarea#text-input').value = localStorage.getItem('markdown-local');
     
     document.querySelector('textarea#text-input').addEventListener('input', function() {
-        // update sessionStorage
+        // update localStorage
         let content = this.value;
-        sessionStorage.setItem('markdown-local', content);
+        localStorage.setItem('markdown-local', content);
 
         // render math        
         renderMathInElement(

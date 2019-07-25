@@ -32,10 +32,6 @@ span#latex {
   flex: 30%;
 }
 
-.column2 {
-    flex: 20%;
-}
-
 .mathedit {
     margin-left: 20px;
 }
@@ -44,12 +40,7 @@ span#latex {
     font-size: 12px;
 }
 
-#preview {
-    font-size: 20px;
-    background-color: rgba(100, 100, 100, .2);
-    max-height: 45%;
-    overflow-y: scroll;
-}
+
 
 #preview span.katex span {
     line-height: 1.1em;
@@ -77,4 +68,12 @@ textarea {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555; 
+}
+
+.md-preview {
+    font-size: 20px;
+    background-color: rgba(100, 100, 100, .2);
+    max-height: 100%;
+    overflow-y: scroll;
+    display: none;
 }

@@ -25,16 +25,23 @@
    
 </head>
 <body>
+
+    <button id='hidePreview' style='display: none'>Hide</button>
+    <div class="row md-preview" id="preview"></div>
+
     <div class="row">
-        <div class="column">
+        <div class="column md">
             <h3>Markdown</h3>
             <textarea id="text-input" oninput="this.editor.update()"></textarea>
-            <div id="preview"> </div>
+            <button id="showPreview">Preview</button>
         </div>
         
+
         <div class="column mathedit">
             <h3>Math Editor</h3>
-            <p>LaTeX Math: <br> <span id="math-field"></span></p>
+            <img alt="homepage demo" src="https://cloud.githubusercontent.com/assets/225809/15163580/1bc048c4-16be-11e6-98a6-de467d00cff1.gif" style="max-width:30%;">
+
+            <p>LaTeX Math input: <br> <span id="math-field"></span></p>
             <h4>LaTeX Code</h4>
 
             <span id="latex"></span>
@@ -42,9 +49,12 @@
                 <img src="https://clipboardjs.com/assets/images/clippy.svg" alt="Copy" class='copy-img'>
             </button>
 
+
+            <br><br>
+
         </div>
         
-        <div class="column">
+        <div class="column iframe">
             <iframe src="https://www.tutorialspoint.com/latex_equation_editor.htm" frameborder="0" width="100%" height='750px'></iframe>
         </div>
     </div>
