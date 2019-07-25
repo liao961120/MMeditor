@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Math/Markdown Editor</title>
+    <link rel="stylesheet" href="lib/mathquill.css"/>
+    <link rel="stylesheet" href="custom.css">
+    <script src="custom.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="lib/mathquill.js"></script>
+    <script src="lib/markdown.min.js"></script>
+   
+</head>
+<body>
+    <div class="row">
+        <div class="column">
+            <h3>Markdown</h3>
+            <textarea id="text-input" oninput="this.editor.update()"
+              rows="20" cols="60"></textarea>
+            <h4>Md Preview</h4>
+            <div id="preview"> </div>
+        </div>
+        
+        <div class="column mathedit">
+            <h3>Math Editor</h3>
+            <p>LaTeX Math: <br> <span id="math-field"></span></p>
+            <h4>LaTeX Code</h4>
+            <p><span id="latex"></span></p>
+        </div>
+
+
+        <div class="column">
+            <iframe src="http://hostmath.com/" frameborder="0" width="100%" height='750px'></iframe>
+        </div>
+    </div>
+
+    <div class="ref">
+        <ul>
+            <li>Math Editor: <a href="https://github.com/mathquill/mathquill">mathquill</a></li>
+            <li>Markdown Editor: <a href="https://github.com/evilstreak/markdown-js">markdown-js</a></li>
+        </ul>
+    </div>
+
+    <script>
+    var mathFieldSpan = document.getElementById('math-field');
+    var latexSpan = document.getElementById('latex');
+
+    var MQ = MathQuill.getInterface(2); // for backcompat
+    var mathField = MQ.MathField(mathFieldSpan, {
+    spaceBehavesLikeTab: true, // configurable
+    handlers: {
+        edit: function() { // useful event handlers
+        latexSpan.textContent = mathField.latex(); // simple API
+        }
+    }
+    });
+    </script>    
+
+    <script>
+    // Markdown editor
+    function Editor(input, preview) {
+        this.update = function () {
+        preview.innerHTML = markdown.toHTML(input.value);
+        };
+        input.editor = this;
+        this.update();
+    }
+    var $ = function (id) { return document.getElementById(id); };
+    new Editor($("text-input"), $("preview"));
+    </script>
+
+</body>
+</html>
