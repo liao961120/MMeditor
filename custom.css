@@ -5,12 +5,12 @@ span {
     font-size: 1.5em;
 }
 
-h3 { 
-    font-size: 0.6em;
+.column > h3 { 
+    font-size: 0.7em;
 }
 
-h4 {
-    font-size: 0.5em;
+.column > h4 {
+    font-size: 0.6em;
 }
 
 .row {
