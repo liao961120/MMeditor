@@ -46,8 +46,8 @@ div#preview {
 textarea {
     max-width: 100%;
     width: 97%;
-    height: 500px;
     resize: none;
+    overflow-y: hidden;
 }
 
 
